@@ -1,0 +1,11 @@
+.main-home-header, .main-home-header:hover {
+    display: block;
+    color: white;
+    background-color: black;
+    text-decoration: none;
+}
+
+.nav.nav-tabs .nav-link {
+    color: black;
+    border: solid black;
+}

@@ -1,6 +1,18 @@
 import React from 'react'
+import { useDispatch, useSelector } from 'react-redux';
+import { editAbility} from './heroCreator3eSlice';
+import { HeroDetails } from './HeroDetails';
 
 export const HeroCreator3e = () => {
+    const dispatch = useDispatch();
+
+
+    const strength = useSelector(state => state.heroCreator3e.strength);
+
+    const handleStrengthChange = (e) => {
+        dispatch(editAbility({ability: e.target.id, amount: Number(e.target.value)}));
+    };
+
     const skillsSectionHeader = (
         <div>
             <span>Skills</span>
@@ -43,46 +55,12 @@ export const HeroCreator3e = () => {
     return (
         <section>
             <h1>Hero Creator 3e</h1>
-            <form>
-                <div>
-                    <label htmlFor="heroName">Hero:</label>
-                    <input id="heroName" type="text"  />
-                    <label htmlFor="playerName">Player:</label>
-                    <input id="playerName" type="text"  />
-
-                    <label htmlFor="identity">Identity:</label>
-                    <input id="identity" type="text"  />
-                    <input id="secret" type="radio"  />
-                    <label htmlFor="secret">Secret</label>
-                    <input id="public" type="radio"  />
-                    <label htmlFor="public">Public</label>
-
-                    <label htmlFor="gender">Gender:</label>
-                    <input id="gender" type="text"  />
-                    <label htmlFor="age">Age:</label>
-                    <input id="age" type="text"  />
-                    <label htmlFor="height">Height:</label>
-                    <input id="height" type="text"  />
-                    <label htmlFor="weight">Weight:</label>
-                    <input id="weight" type="text"  />
-                    <label htmlFor="eyes">Eyes:</label>
-                    <input id="eyes" type="text" />
-                    <label htmlFor="hair">Hair:</label>
-                    <input id="hair" type="text" />
-                    <label htmlFor="groupAffiliation">Group Affiliation:</label>
-                    <input id="groupAffiliation" type="text" />
-                    <label htmlFor="baseOfOperations">Base Of Operations:</label>
-                    <input id="baseOfOperations" type="text" />
-
-                    <label htmlFor="powerLevel">Power Level:</label>
-                    <input type="number"  />
-
-                    <span>Power Point Totals: Abilities {0} + Powers {} + Advantages {} + Skills {} + Defenses {} = {}</span>
-                </div>
+            <form className="hero-creator-3e">
+                <HeroDetails />
 
                 <div>
                     <label htmlFor="strength">Strength</label>
-                    <input id="strength" type="number" />
+                    <input id="strength" type="number" name="strength" onChange={handleStrengthChange} value={strength} />
                     <label htmlFor="agility">Agility</label>
                     <input id="agility" type="number" />
                     <label htmlFor="fighting">Fighting</label>
@@ -99,6 +77,34 @@ export const HeroCreator3e = () => {
                     <input id="presence" type="number" />
                 </div>
 
+                <div className="offense">
+                    <span>Offense</span>
+                    <div>
+                        <label htmlFor="initiative">Initiative</label>
+                        <input id="initiative" type="number" />
+                    </div>
+                    <div>
+                        <input type="text" />
+                        <input type="number" />
+                        <input type="text" />
+                    </div>
+                    <div>
+                        <input type="text" />
+                        <input type="number" />
+                        <input type="text" />
+                    </div>
+                    <div>
+                        <input type="text" />
+                        <input type="number" />
+                        <input type="text" />
+                    </div>
+                    <div>
+                        <input type="text" />
+                        <input type="number" />
+                        <input type="text" />
+                    </div>
+                </div>
+
                 <div>
                     Defense
                     <label htmlFor="dodge">Dodge (AGL)</label>
@@ -113,31 +119,6 @@ export const HeroCreator3e = () => {
                     <input id="will" type="number" />
                 </div>
 
-                <div>
-                    Offense
-                    <label htmlFor="initiative">Initiative</label>
-                    <input id="initiative" type="number" />
-                    <div>
-                        <input type="text" />
-                        <input type="number" />
-                        <input type="text" />
-                    </div>
-                    <div>
-                        <input type="text" />
-                        <input type="number" />
-                        <input type="text" />
-                    </div>
-                    <div>
-                        <input type="text" />
-                        <input type="number" />
-                        <input type="text" />
-                    </div>
-                    <div>
-                        <input type="text" />
-                        <input type="number" />
-                        <input type="text" />
-                    </div>
-                </div>
 
                 <div>
                     <label htmlFor="notesConditions">Notes & Conditions</label>
@@ -155,7 +136,7 @@ export const HeroCreator3e = () => {
                 </div>
 
                 <div>
-                    <label htmlFor="abilityPointsSpent"></label>
+                    <label htmlFor="abilityPointsSpent">Ability Points Spent</label>
                     <input id="abilityPointsSpent" type="number" />
 
                 </div>
@@ -184,7 +165,7 @@ export const HeroCreator3e = () => {
                     <textarea id="equipmentVehiclesHeadquarters"></textarea>
                 </div>
                 <div>
-                    Information
+                    <span>Information</span>
                     <label htmlFor="series">Series:</label>
                     <input id="series" type="text" />
                     <label htmlFor="gameMaster">Game Master:</label>

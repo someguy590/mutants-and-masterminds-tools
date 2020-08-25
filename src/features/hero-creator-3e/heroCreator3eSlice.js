@@ -38,10 +38,42 @@ const heroCreator3eSlice = createSlice({
         will: 0,
     },
     reducers: {
+        editHeroDetail(state, action) {
+            const { detail, detailValue } = action.payload;
+            state[detail] = detailValue;
+        },
+        editIdentityStatus(state, action) {
+            state.isIdentitySecret = !state.isIdentitySecret;
+        },
+        editPowerLevel(state, action) {
+            state.powerLevel = action.payload;
+        },
+        editAbility(state, action) {
+            let { ability, amount } = action.payload;
+            let prevAmount = state[ability];
+            state[ability] = amount;
+
+            amount = amount - prevAmount;
+            state.abilityPoints -= amount * 2;
+            state.abilitiesCost += amount * 2;
+        },
+        editDefense(state, action) {
+
+        },
+        editSkill(state, action) {
+
+        }
     }
 });
 
-export const {  } = heroCreator3eSlice.actions;
+export const {
+    editHeroDetail, 
+    editIdentityStatus, 
+    editPowerLevel,
+    editAbility, 
+    editDefense, 
+    editSkill
+} = heroCreator3eSlice.actions;
 
 export default heroCreator3eSlice.reducer;
 

@@ -67,13 +67,24 @@ const heroCreator3eSlice = createSlice({
 });
 
 export const {
-    editHeroDetail, 
-    editIdentityStatus, 
+    editHeroDetail,
+    editIdentityStatus,
     editPowerLevel,
-    editAbility, 
-    editDefense, 
+    editAbility,
+    editDefense,
     editSkill
 } = heroCreator3eSlice.actions;
+
+export const selectAbilities3e = state => ({
+    strength: state.heroCreator3e.strength,
+    agility: state.heroCreator3e.agility,
+    fighting: state.heroCreator3e.fighting,
+    awareness: state.heroCreator3e.awareness,
+    stamina: state.heroCreator3e.stamina,
+    dexterity: state.heroCreator3e.dexterity,
+    intellect: state.heroCreator3e.intellect,
+    presence: state.heroCreator3e.presence
+});
 
 export default heroCreator3eSlice.reducer;
 

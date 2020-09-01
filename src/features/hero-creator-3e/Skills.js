@@ -23,7 +23,7 @@ export const Skills = () => {
             for (let i = 0; i < 3; i++) {
                 skillRowContent = [];
                 skillRow = <div key={key++}>{skillRowContent}</div>;
-                skillRowContent.push(<input key={0} type="input" />);
+                skillRowContent.push(<input key={0} type="text" />);
                 skillRowContent.push(<span key={1}>{}</span>);
                 skillRowContent.push(<span key={2}>{}</span>);
                 skillRowContent.push(<input key={3} type="number" />);

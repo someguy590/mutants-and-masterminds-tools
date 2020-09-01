@@ -60,9 +60,23 @@ const heroCreator3eSlice = createSlice({
             amount = amount - prevAmount;
             state.abilityPoints -= amount * 2;
             state.abilitiesCost += amount * 2;
+            for (const defense of getDefenseFromAbility(ability))
+                state[defense] += amount;
         },
-        editDefense(state, action) {
+        editDefenseCost(state, action) {
+            const { defense, newAmount } = action.payload;
+            const defenseCost = state[defense + 'Cost'];
+            const prevAmount = state[defense];
 
+            const difference = newAmount - prevAmount;
+
+            if (defenseCost + difference < 0)
+                return;
+
+            state[defense] = newAmount;
+            state[defense + 'Cost'] += difference;
+            state.abilityPoints -= difference;
+            state.defensesCost += difference;
         },
         editSkill(state, action) {
 
@@ -75,7 +89,7 @@ export const {
     editIdentityStatus,
     editPowerLevel,
     editAbility,
-    editDefense,
+    editDefenseCost,
     editSkill
 } = heroCreator3eSlice.actions;
 
@@ -107,3 +121,17 @@ export const selectDefenseCost3e = state => ({
 
 export default heroCreator3eSlice.reducer;
 
+function getDefenseFromAbility(ability) {
+    switch (ability) {
+        case 'agility':
+            return ['dodge'];
+        case 'fighting':
+            return ['parry'];
+        case 'stamina':
+            return ['fortitude', 'toughness'];
+        case 'awareness':
+            return ['will'];
+        default:
+            return [];
+    }
+};

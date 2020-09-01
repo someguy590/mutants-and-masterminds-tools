@@ -36,6 +36,10 @@ const heroCreator3eSlice = createSlice({
         fortitude: 0,
         toughness: 0,
         will: 0,
+        dodgeCost: 0,
+        parryCost: 0,
+        fortitudeCost: 0,
+        willCost: 0
     },
     reducers: {
         editHeroDetail(state, action) {
@@ -84,6 +88,21 @@ export const selectAbilities3e = state => ({
     dexterity: state.heroCreator3e.dexterity,
     intellect: state.heroCreator3e.intellect,
     presence: state.heroCreator3e.presence
+});
+
+export const selectDefenses3e = state => ({
+    dodge: state.heroCreator3e.dodge,
+    parry: state.heroCreator3e.parry,
+    fortitude: state.heroCreator3e.fortitude,
+    toughness: state.heroCreator3e.toughness,
+    will: state.heroCreator3e.will
+});
+
+export const selectDefenseCost3e = state => ({
+    dodgeCost: state.heroCreator3e.dodgeCost,
+    parryCost: state.heroCreator3e.parryCost,
+    fortitudeCost: state.heroCreator3e.fortitudeCost,
+    willCost: state.heroCreator3e.willCost
 });
 
 export default heroCreator3eSlice.reducer;

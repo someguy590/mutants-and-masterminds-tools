@@ -184,3 +184,28 @@ export const normalSkillIds = [
 export const specifiedSkillIds = [
     ...Object.keys(specifiedSkills)
 ];
+
+export const skillsByAbilities = {
+    [strengthId]: [
+        athleticsId
+    ],
+    [agilityId]: [
+        acrobaticsId, stealthId
+    ],
+    [fightingId]: [
+        customSkill0Id, customSkill1Id, customSkill2Id
+    ],
+    [awarenessId]: [
+        insightId, perceptionId
+    ],
+    [staminaId]: [],
+    [dexterityId]: [
+        customSkill6Id, customSkill7Id, customSkill8Id
+    ],
+    [intellectId]: [
+        customSkill3Id, customSkill4Id, customSkill5Id, investigationId, technologyId, vehiclesId
+    ],
+    [presenceId]: [
+        deceptionId, intimidationId, persuationId
+    ],
+}

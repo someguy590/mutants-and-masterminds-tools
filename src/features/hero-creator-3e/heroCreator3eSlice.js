@@ -116,7 +116,23 @@ const heroCreator3eSlice = createSlice({
             state.defensesCost += difference;
         },
         editSkill(state, action) {
-
+            const { skill, newAmount, isRanks } = action.payload;
+            if (isRanks) {
+                const oldamount = state.skills[skill].ranks;
+                const difference = newAmount - oldamount;
+                if (difference < 0)
+                    return;
+                state.skills[skill].total += difference;
+                state.skills[skill].ranks += difference;
+                state.skillsCost += difference;
+                state.abilityPoints -= difference;
+            }
+            else {
+                const oldamount = state.skills[skill].other;
+                const difference = newAmount - oldamount;
+                state.skills[skill].total += difference;
+                state.skills[skill].other += difference;
+            }
         }
     }
 });

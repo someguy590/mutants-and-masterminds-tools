@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { skillIds, strings, normalSkillIds, specifiedSkillIds } from 'resources/strings';
+import { skillIds, strings, normalSkillIds, specifiedSkillIds, skillsByAbilities } from 'resources/strings';
 
 const skills = { ids: skillIds };
 for (let id of skills.ids) {
@@ -91,15 +91,19 @@ const heroCreator3eSlice = createSlice({
             state.powerLevel = action.payload;
         },
         editAbility(state, action) {
-            let { ability, amount } = action.payload;
+            const { ability, amount } = action.payload;
             let prevAmount = state[ability];
             state[ability] = amount;
 
-            amount = amount - prevAmount;
-            state.abilityPoints -= amount * 2;
-            state.abilitiesCost += amount * 2;
+            const difference = amount - prevAmount;
+            state.abilityPoints -= difference * 2;
+            state.abilitiesCost += difference * 2;
             for (const defense of getDefenseFromAbility(ability))
-                state[defense] += amount;
+                state[defense] += difference;
+            for (const skill of skillsByAbilities[ability]) {
+                state.skills[skill].ability += difference;
+                state.skills[skill].total += difference;
+            }
         },
         editDefenseCost(state, action) {
             const { defense, newAmount } = action.payload;

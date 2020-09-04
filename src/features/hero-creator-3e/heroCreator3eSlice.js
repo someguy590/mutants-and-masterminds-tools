@@ -133,6 +133,10 @@ const heroCreator3eSlice = createSlice({
                 state.skills[skill].total += difference;
                 state.skills[skill].other += difference;
             }
+        },
+        editCustomSkillText(state, action) {
+            const { skill, text } = action.payload;
+            state.skills[skill].text = text;
         }
     }
 });
@@ -143,7 +147,8 @@ export const {
     editPowerLevel,
     editAbility,
     editDefenseCost,
-    editSkill
+    editSkill,
+    editCustomSkillText
 } = heroCreator3eSlice.actions;
 
 export const selectAbilities3e = state => ({

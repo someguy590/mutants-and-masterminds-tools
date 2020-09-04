@@ -8,12 +8,27 @@ export const dexterity = 'Dexterity';
 export const intellect = 'Intellect';
 export const presence = 'Presence';
 
+export const strengthId = 'strength';
+export const agilityId = 'agility';
+export const fightingId = 'fighting';
+export const awarenessId = 'awareness';
+export const staminaId = 'stamina';
+export const dexterityId = 'dexterity';
+export const intellectId = 'intellect';
+export const presenceId = 'presence';
+
 // defenses
 export const dodge = 'Dodge';
 export const parry = 'Parry';
 export const fortitude = 'Fortitude';
 export const toughness = 'Toughness';
 export const will = 'Will';
+
+export const dodgeId = 'dodge';
+export const parryId = 'parry';
+export const fortitudeId = 'fortitude';
+export const toughnessId = 'toughness';
+export const willId = 'will';
 
 // skills
 export const acrobatics = 'Acrobatics';
@@ -31,6 +46,31 @@ export const sleightOfHand = 'Sleight Of Hand';
 export const stealth = 'Stealth';
 export const technology = 'Technology';
 export const vehicles = 'Vehicles';
+
+export const acrobaticsId = 'acrobatics';
+export const athleticsId = 'athletics';
+export const closeCombatId = 'closeCombat';
+export const deceptionId = 'deception';
+export const expertiseId = 'expertise';
+export const insightId = 'insight';
+export const intimidationId = 'intimidation';
+export const investigationId = 'investigation';
+export const perceptionId = 'perception';
+export const persuationId = 'persuation';
+export const rangedCombatId = 'rangedCombat';
+export const sleightOfHandId = 'sleightOfHand';
+export const stealthId = 'stealth';
+export const technologyId = 'technology';
+export const vehiclesId = 'vehicles';
+export const customSkill0Id = 'customSkill0';
+export const customSkill1Id = 'customSkill1';
+export const customSkill2Id = 'customSkill2';
+export const customSkill3Id = 'customSkill3';
+export const customSkill4Id = 'customSkill4';
+export const customSkill5Id = 'customSkill5';
+export const customSkill6Id = 'customSkill6';
+export const customSkill7Id = 'customSkill7';
+export const customSkill8Id = 'customSkill8';
 
 export const abilities = [
 

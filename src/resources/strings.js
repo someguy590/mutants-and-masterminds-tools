@@ -58,11 +58,26 @@ export const skills = [
     vehicles
 ];
 
-export const specifiedSkills = [
+export const normalSkills = {
+    acrobatics,
+    athletics,
+    deception,
+    insight,
+    intimidation,
+    investigation,
+    perception,
+    persuation,
+    sleightOfHand,
+    stealth,
+    technology,
+    vehicles
+};
+
+export const specifiedSkills = {
     closeCombat,
     expertise,
     rangedCombat,
-];
+};
 
 export const skillHeaders = [
     'Skills',
@@ -72,7 +87,7 @@ export const skillHeaders = [
     'Other'
 ];
 
-export const heroStats = {
+export const strings = {
     abilities: {
         strength,
         agility,
@@ -94,17 +109,38 @@ export const heroStats = {
         acrobatics,
         athletics,
         closeCombat,
+        customSkill0: '',
+        customSkill1: '',
+        customSkill2: '',
         deception,
         expertise,
+        customSkill3: '',
+        customSkill4: '',
+        customSkill5: '',
         insight,
         intimidation,
         investigation,
         perception,
         persuation,
         rangedCombat,
+        customSkill6: '',
+        customSkill7: '',
+        customSkill8: '',
         sleightOfHand,
         stealth,
         technology,
         vehicles
     }
 };
+
+export const skillIds = [
+    ...Object.keys(strings.skills)
+];
+
+export const normalSkillIds = [
+    ...Object.keys(normalSkills)
+];
+
+export const specifiedSkillIds = [
+    ...Object.keys(specifiedSkills)
+];

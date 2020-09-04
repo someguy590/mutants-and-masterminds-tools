@@ -46,6 +46,16 @@ export const sleightOfHand = 'Sleight Of Hand';
 export const stealth = 'Stealth';
 export const technology = 'Technology';
 export const vehicles = 'Vehicles';
+export const customSkill0 = '';
+export const customSkill1 = '';
+export const customSkill2 = '';
+export const customSkill3 = '';
+export const customSkill4 = '';
+export const customSkill5 = '';
+export const customSkill6 = '';
+export const customSkill7 = '';
+export const customSkill8 = '';
+export const customSkill9 = '';
 
 export const acrobaticsId = 'acrobatics';
 export const athleticsId = 'athletics';
@@ -71,6 +81,7 @@ export const customSkill5Id = 'customSkill5';
 export const customSkill6Id = 'customSkill6';
 export const customSkill7Id = 'customSkill7';
 export const customSkill8Id = 'customSkill8';
+export const customSkill9Id = 'customSkill9';
 
 export const abilities = [
 

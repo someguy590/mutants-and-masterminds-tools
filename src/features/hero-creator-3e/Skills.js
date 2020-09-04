@@ -26,7 +26,7 @@ export const Skills = () => {
             skillRowContent.push(<span key={2}>{skill.ability}</span>);
             skillRowContent.push(<input key={3} type="number" value={skill.ranks} />);
             skillRowContent.push(<input key={4} type="number" value={skill.other} />);
-            }
+        }
         else if (skill.type === 'custom') {
             skillRowContent.push(<input key={0} type="text" value={skill.text} />);
             skillRowContent.push(<span key={1}>{skill.total}</span>);
@@ -37,11 +37,11 @@ export const Skills = () => {
         else {
             skillRowContent.push(<span key={0}>{skill.text}</span>);
         }
-            skillsSection.push(skillRow);
-        }
+        skillsSection.push(skillRow);
+    }
 
     return (
-        <div>
+        <div className="skills">
             {skillsSection}
         </div>
     );

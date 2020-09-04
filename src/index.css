@@ -16,7 +16,7 @@
     gap: 10px;
 }
 
-.hero-creator-3e > div {
+.hero-creator-3e>div {
     display: flex;
     flex-direction: column;
     border: solid;
@@ -25,4 +25,13 @@
 .offense div {
     display: flex;
     flex-direction: row;
+}
+
+.skills>div {
+    display: flex;
+    flex-direction: row;
+}
+
+.skills>div>* {
+    flex: 1;
 }

@@ -1,46 +1,83 @@
 import { createSlice } from '@reduxjs/toolkit';
+import { skillIds, strings, normalSkillIds, specifiedSkillIds } from 'resources/strings';
+
+const skills = { ids: skillIds };
+for (let id of skills.ids) {
+    const skillType = getSkillType(id);
+    if (skillType === 'normal') {
+        skills[id] = {
+            type: skillType,
+            text: strings.skills[id],
+            total: 0,
+            ability: 0,
+            ranks: 0,
+            other: 0
+        };
+    }
+    else if (skillType === 'header') {
+        skills[id] = {
+            type: skillType,
+            text: strings.skills[id],
+        };
+    }
+    else {
+        skills[id] = {
+            type: skillType,
+            text: '',
+            total: 0,
+            ability: 0,
+            ranks: 0,
+            other: 0
+        };
+    }
+}
+
+const initialState = {
+    plotPoints: 0,
+    abilityPoints: 150,
+    powerLevel: 10,
+    abilitiesCost: 0,
+    powersCost: 0,
+    advantagesCost: 0,
+    skillsCost: 0,
+    defensesCost: 0,
+    heroName: '',
+    playerName: '',
+    identity: '',
+    isIdentitySecret: true,
+    gender: '',
+    age: '',
+    height: '',
+    weight: '',
+    eyes: '',
+    hair: '',
+    groupAffiliation: '',
+    baseOfOperations: '',
+    strength: 0,
+    agility: 0,
+    fighting: 0,
+    awareness: 0,
+    stamina: 0,
+    dexterity: 0,
+    intellect: 0,
+    presence: 0,
+    dodge: 0,
+    parry: 0,
+    fortitude: 0,
+    toughness: 0,
+    will: 0,
+    dodgeCost: 0,
+    parryCost: 0,
+    fortitudeCost: 0,
+    willCost: 0,
+    skills: skills
+};
+
+
 
 const heroCreator3eSlice = createSlice({
     name: 'heroCreator3e',
-    initialState: {
-        plotPoints: 0,
-        abilityPoints: 150,
-        powerLevel: 10,
-        abilitiesCost: 0,
-        powersCost: 0,
-        advantagesCost: 0,
-        skillsCost: 0,
-        defensesCost: 0,
-        heroName: '',
-        playerName: '',
-        identity: '',
-        isIdentitySecret: true,
-        gender: '',
-        age: '',
-        height: '',
-        weight: '',
-        eyes: '',
-        hair: '',
-        groupAffiliation: '',
-        baseOfOperations: '',
-        strength: 0,
-        agility: 0,
-        fighting: 0,
-        awareness: 0,
-        stamina: 0,
-        dexterity: 0,
-        intellect: 0,
-        presence: 0,
-        dodge: 0,
-        parry: 0,
-        fortitude: 0,
-        toughness: 0,
-        will: 0,
-        dodgeCost: 0,
-        parryCost: 0,
-        fortitudeCost: 0,
-        willCost: 0
-    },
+    initialState: initialState,
     reducers: {
         editHeroDetail(state, action) {
             const { detail, detailValue } = action.payload;
@@ -119,6 +156,8 @@ export const selectDefenseCost3e = state => ({
     willCost: state.heroCreator3e.willCost
 });
 
+export const selectSkills3e = state => state.heroCreator3e.skills;
+
 export default heroCreator3eSlice.reducer;
 
 function getDefenseFromAbility(ability) {
@@ -135,3 +174,14 @@ function getDefenseFromAbility(ability) {
             return [];
     }
 };
+
+function getSkillType(skill) {
+    switch (true) {
+        case (normalSkillIds.includes(skill)):
+            return 'normal';
+        case (specifiedSkillIds.includes(skill)):
+            return 'header';
+        default:
+            return 'custom';
+    }
+}

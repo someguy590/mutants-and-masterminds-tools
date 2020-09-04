@@ -40,6 +40,7 @@ const initialState = {
     powersCost: 0,
     advantagesCost: 0,
     skillsCost: 0,
+    totalSkills: 0,
     defensesCost: 0,
     heroName: '',
     playerName: '',
@@ -120,12 +121,16 @@ const heroCreator3eSlice = createSlice({
             if (isRanks) {
                 const oldamount = state.skills[skill].ranks;
                 const difference = newAmount - oldamount;
-                if (difference < 0)
+                if (newAmount < 0)
                     return;
                 state.skills[skill].total += difference;
                 state.skills[skill].ranks += difference;
-                state.skillsCost += difference;
-                state.abilityPoints -= difference;
+                state.totalSkills += difference;
+
+
+                const skillsCost = Math.ceil(state.totalSkills / 2);
+                state.abilityPoints += state.skillsCost - skillsCost;
+                state.skillsCost = skillsCost;
             }
             else {
                 const oldamount = state.skills[skill].other;

@@ -40,10 +40,12 @@ export const HeroDetails = () => {
 
             <label htmlFor="identity">Identity:</label>
             <input id="identity" type="text" onChange={handleEditHeroDetailChange} value={identity} />
-            <input id="secret" type="radio" name="identity" onChange={handleIdentityStatus} checked={isIdentitySecret} />
-            <label htmlFor="secret">Secret</label>
-            <input id="public" type="radio" name="identity" onChange={handleIdentityStatus} checked={!isIdentitySecret} />
-            <label htmlFor="public">Public</label>
+            <fieldset>
+                <input id="secret" type="radio" name="identity" onChange={handleIdentityStatus} checked={isIdentitySecret} />
+                <label htmlFor="secret">Secret</label>
+                <input id="public" type="radio" name="identity" onChange={handleIdentityStatus} checked={!isIdentitySecret} />
+                <label htmlFor="public">Public</label>
+            </fieldset>
 
             <label htmlFor="gender">Gender:</label>
             <input id="gender" type="text" onChange={handleEditHeroDetailChange} value={gender} />

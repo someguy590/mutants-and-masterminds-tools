@@ -212,10 +212,10 @@ export const skillsByAbilities = {
     ],
     [staminaId]: [],
     [dexterityId]: [
-        customSkill6Id, customSkill7Id, customSkill8Id
+        customSkill7Id, customSkill8Id, customSkill9Id, sleightOfHandId, vehiclesId
     ],
     [intellectId]: [
-        customSkill3Id, customSkill4Id, customSkill5Id, investigationId, technologyId, vehiclesId
+        customSkill3Id, customSkill4Id, customSkill5Id, customSkill6Id, investigationId, technologyId
     ],
     [presenceId]: [
         deceptionId, intimidationId, persuationId

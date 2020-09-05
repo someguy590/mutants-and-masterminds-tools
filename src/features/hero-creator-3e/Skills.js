@@ -1,8 +1,24 @@
 import React from 'react'
+import { useSelector, useDispatch } from 'react-redux';
+import { selectSkills3e, editSkill, editCustomSkillText } from './heroCreator3eSlice';
 
 export const Skills = () => {
+    const dispatch = useDispatch();
+    const skills = useSelector(selectSkills3e);
+
+    const handleSkillChange = (skill, isRanks) => e => dispatch(editSkill({
+        skill: skill,
+        newAmount: Number(e.target.value),
+        isRanks: isRanks
+    }));
+
+    const handleCustomSkillChange = skill => e => dispatch(editCustomSkillText({
+        skill: skill,
+        text: e.target.value
+    }));
+
     const skillsSectionHeader = (
-        <div>
+        <div key={0}>
             <span>Skills</span>
             <span>Total</span>
             <span>Ability</span>
@@ -11,37 +27,55 @@ export const Skills = () => {
         </div>
     );
     const skillsSection = [skillsSectionHeader];
-    const skills = ['Acrobatics', 'Athletics', 'Close Combat', 'Deception', 'Expertise', 'Insight', 'Intimidation', 'Investigation', 'Perception', 'Persuation', 'Ranged Combat', 'Sleight Of Hand', 'Stealth', 'Technology', 'Treatment', 'Vehicles'];
-    const specifiedSkills = ['Close Combat', 'Expertise', 'Ranged Combat'];
-    for (const skill of skills) {
+    for (let i = 0, key = 1; i < skills.ids.length; i++) {
+        const skillId = skills.ids[i];
+        const skill = skills[skillId];
         let skillRowContent = [];
-        let skillRow = <div>{skillRowContent}</div>;
-        if (specifiedSkills.includes(skill)) {
-            skillRowContent.push(<span>{skill}</span>);
-            skillsSection.push(skillRow);
-            for (let i = 0; i < 3; i++) {
-                skillRowContent = [];
-                skillRow = <div>{skillRowContent}</div>;
-                skillRowContent.push(<input type="input" />);
-                skillRowContent.push(<span>{}</span>);
-                skillRowContent.push(<span>{}</span>);
-                skillRowContent.push(<input type="input" />);
-                skillRowContent.push(<input type="input" />);
-                skillsSection.push(skillRow);
-            }
+        let skillRow = <div key={key++}>{skillRowContent}</div>;
+        if (skill.type === 'normal') {
+            skillRowContent.push(<span key={0}>{skill.text}</span>);
+            skillRowContent.push(<span key={1}>{skill.total}</span>);
+            skillRowContent.push(<span key={2}>{skill.ability}</span>);
+            skillRowContent.push(
+                <input
+                    key={3}
+                    type="number" value={skill.ranks}
+                    onChange={handleSkillChange(skillId, true)}
+                />);
+            skillRowContent.push(
+                <input
+                    key={4}
+                    type="number"
+                    value={skill.other}
+                    onChange={handleSkillChange(skillId, false)}
+                />);
+        }
+        else if (skill.type === 'custom') {
+            skillRowContent.push(<input key={0} type="text" value={skill.text} onChange={handleCustomSkillChange(skillId)} />);
+            skillRowContent.push(<span key={1}>{skill.total}</span>);
+            skillRowContent.push(<span key={2}>{skill.ability}</span>);
+            skillRowContent.push(
+                <input
+                    key={3}
+                    type="number" value={skill.ranks}
+                    onChange={handleSkillChange(skillId, true)}
+                />);
+            skillRowContent.push(
+                <input
+                    key={4}
+                    type="number"
+                    value={skill.other}
+                    onChange={handleSkillChange(skillId, false)}
+                />);
         }
         else {
-            skillRowContent.push(<span>{skill}</span>);
-            skillRowContent.push(<span>{}</span>);
-            skillRowContent.push(<span>{}</span>);
-            skillRowContent.push(<input type="input" />);
-            skillRowContent.push(<input type="input" />);
-            skillsSection.push(skillRow);
+            skillRowContent.push(<span key={0}>{skill.text}</span>);
         }
+        skillsSection.push(skillRow);
     }
 
     return (
-        <div>
+        <div className="skills">
             {skillsSection}
         </div>
     );

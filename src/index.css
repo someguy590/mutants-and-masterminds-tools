@@ -1,3 +1,7 @@
+input[type=number], input[type=text] {
+    min-width: 0px;
+}
+
 .main-home-header, .main-home-header:hover {
     display: block;
     color: white;
@@ -5,21 +9,54 @@
     text-decoration: none;
 }
 
+address {
+    display: inline;
+}
+
+.footer {
+    display: block;
+    color: white;
+    background-color: black;
+    text-align: center;
+}
+
+.footer ul {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.footer li {
+    display: inline-block;
+}
+
+.footer a {
+    color: white;
+}
+
+.footer a::after {
+    display: inline-block;
+    content: '|';
+    padding: 0 3px;
+}
+
 .nav.nav-tabs .nav-link {
     color: black;
-    border: solid black;
+    outline: solid black;
 }
 
 .hero-creator-3e {
     display: flex;
     flex-direction: column;
     gap: 10px;
+    outline: black solid;
+    align-items: center;
 }
 
 .hero-creator-3e>div {
     display: flex;
     flex-direction: column;
-    border: solid;
+    outline: black solid thin;
+    width: 50%;
 }
 
 .offense div {
@@ -32,6 +69,14 @@
     flex-direction: row;
 }
 
-.skills>div>* {
-    flex: 1;
+.skills>div * {
+    flex: 1 1 3em;
+}
+
+.skills>div *:nth-child(odd) {
+    outline: blue solid thin;
+}
+
+.skills>div *:nth-child(even) {
+    outline: red solid thin;
 }

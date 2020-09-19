@@ -9,6 +9,36 @@ input[type=number], input[type=text] {
     text-decoration: none;
 }
 
+address {
+    display: inline;
+}
+
+.footer {
+    display: block;
+    color: white;
+    background-color: black;
+    text-align: center;
+}
+
+.footer ul {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.footer li {
+    display: inline-block;
+}
+
+.footer a {
+    color: white;
+}
+
+.footer a::after {
+    display: inline-block;
+    content: '|';
+    padding: 0 3px;
+}
+
 .nav.nav-tabs .nav-link {
     color: black;
     outline: solid black;
